@@ -23,14 +23,15 @@ public class AbrirConvenio {
     public static void CreateDriverWebChrome() {
         File arquivo = new File("src\\main\\driverNavegador\\chromedriver.exe");
         System.setProperty("webdriver.chrome.driver", arquivo.getAbsolutePath());
-        chromeOptions.addArguments("--headless");//rodar sem abrir navegador
-        driverWeb = new ChromeDriver(chromeOptions);
+        //chromeOptions.addArguments("--headless");//rodar sem abrir navegador
+        //driverWeb = new ChromeDriver(chromeOptions);
+        driverWeb = new ChromeDriver();
         buscarURL();
     }
 
     public static void buscarURL(){
         driverWeb.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        driverWeb.get("https://pagatudo.zeroglosa.com.br/pagatudo/");
+        driverWeb.get("https://glosamax.zeroglosa.com.br/glosamax/arquivo/index");
         driverWeb.manage().window().maximize();
     }
 

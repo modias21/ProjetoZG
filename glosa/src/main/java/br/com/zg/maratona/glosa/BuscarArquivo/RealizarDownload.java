@@ -1,25 +1,20 @@
 package br.com.zg.maratona.glosa.BuscarArquivo;
 
-import br.com.zg.maratona.glosa.AbrirURL.AbrirConvenio;
+import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 
 public class RealizarDownload {
 
-    private static String NAVEGADOR = "chrome";
+    private acoes acao = new acoes();
 
-    private WebDriver driverWeb = AbrirConvenio.getURL(NAVEGADOR);
-    private JavascriptExecutor tela = (JavascriptExecutor) driverWeb;
+    @Test
+    public void download(){
+        for (int i=1; i<=218; i++)  {
+            acao.clicar(By.xpath("//*[@id='list-arquivo']/div/a["+i+"]"));
+            acao.clicar(By.xpath("//*[@id='list-arquivo']/div/ul/li/a"));
+            acao.clicar(By.xpath("//*[@id=\"list-arquivo\"]/a"));
 
-    public void esperar(long tempo) {
-        try {
-            Thread.sleep(tempo);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            acao.esperar(1000);
         }
-    }
-    public void clicar(By by) {
-        driverWeb.findElement(by).click();
     }
 }
